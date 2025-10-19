@@ -8,8 +8,7 @@ console = Console(force_terminal=True)
 def send_notification(title, message):
     url = "https://api.pushover.net/1/messages.json"
     payload = {
-        "token": "ap2rrwirrbm96t5i6qjspac1t578ka",
-        "user": "usrkem1egv76ed3fbrk6z5yb7ueabb",
+
         "title": title,
         "message": message
     }

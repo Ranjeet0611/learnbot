@@ -14,7 +14,7 @@ def task():
     console.print(f"[INFO] Task triggered at {time.strftime('%Y-%m-%d %H:%M:%S')}", style=console_styles.console_blue_styles)
     try:
         daily_kafka_topic = repo.get_kafka_topics()
-        ai_response = ai.get_topic_description(daily_kafka_topic['concept'])
+        ai_response = ai.get_response_from_genai(daily_kafka_topic['concept'])
         notification.send_notification(daily_kafka_topic['title'], ai_response)
         console.print("[SUCCESS] Task completed.", style=console_styles.console_green_styles)
     except Exception as e:

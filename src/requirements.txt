@@ -1,3 +1,5 @@
 pymongo
 rich
 schedule
+google
+google-genai
