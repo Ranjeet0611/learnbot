@@ -8,7 +8,7 @@ import os
 console = Console(force_terminal=True)
 
 
-def get_topic_description(topic_content):
+def get_response_from_local_model(topic_content):
     ollama_url = constants.OLLAMA_URL
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     prompt_path = os.path.join(base_dir, constants.PROMPT_FILE_NAME)
