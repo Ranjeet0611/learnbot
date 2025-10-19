@@ -1,10 +1,10 @@
 from rich.console import Console
 from src.learnbot.constants import console_styles, constants
-import os
+from src.learnbot.util.secrets_util import Secrets
 import requests
 import json
 from google import genai
-
+import os
 console = Console(force_terminal=True)
 
 
@@ -43,7 +43,8 @@ def get_topic_description(topic_content):
 
 
 def get_response_from_genai(topic_content):
-    client = genai.Client()
+    api_key = Secrets.get_genai_api_key()
+    client = genai.Client(api_key=api_key)
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     prompt_path = os.path.join(base_dir, constants.PROMPT_FILE_NAME)
     try:

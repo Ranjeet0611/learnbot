@@ -1,11 +1,14 @@
 from rich.console import Console
 from src.learnbot.constants import console_styles
 from pymongo import MongoClient, ASCENDING
+from src.learnbot.util.secrets_util import Secrets
 
 console = Console(force_terminal=True)
 
 
-def get_database(db_name, uri="mongodb://localhost:27017/"):
+def get_database(db_name, uri=None):
+    if uri is None:
+        uri = Secrets.get_mongodb_uri()
     try:
         console.print(f"[INFO] Connecting to MongoDB at {uri}...", style=console_styles.console_blue_styles)
         client = MongoClient(uri)
@@ -18,7 +21,7 @@ def get_database(db_name, uri="mongodb://localhost:27017/"):
 
 def get_kafka_topics():
     try:
-        client = get_database("kafka_learning", "mongodb://localhost:27017/")
+        client = get_database("kafka_learning")
         if client is None:
             console.print("[ERROR] No database client available.", style=console_styles.console_red_styles)
             return None

@@ -1,14 +1,17 @@
 from rich.console import Console
 from src.learnbot.constants import console_styles
+from src.learnbot.util.secrets_util import Secrets
 import requests
 
 console = Console(force_terminal=True)
 
 
+
 def send_notification(title, message):
     url = "https://api.pushover.net/1/messages.json"
     payload = {
-
+        "token": Secrets.get_pushover_token(),
+        "user": Secrets.get_pushover_user(),
         "title": title,
         "message": message
     }
