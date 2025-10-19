@@ -1,0 +1,5 @@
+PROMPT_FILE_NAME = "prompt.txt"
+OLLAMA_URL = "http://localhost:11434/api/generate"
+MODEL_NAME = "gemma3:12b"
+PROMPT_TOPIC_TITLE = "{{TOPIC-TITLE}}"
+NOTIFICATION_SCHEDULE_TIME = "23:29"
